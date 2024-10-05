@@ -8,3 +8,4 @@ jobs:
     steps:
       - name: Checkout código
         uses: actions/checkout@v2
+        run: echo "Deploying"
