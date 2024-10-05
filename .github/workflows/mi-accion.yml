@@ -6,6 +6,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v2
-        run: echo "Deploying"
+        - name: Checkout del repositorio
+          uses: actions/checkout@v2  # Descarga el código fuente del repositorio
+  
+        - name: Ejecutar comando de shell
+          run: echo "Hola, esta es mi primera GitHub Action!"  # Este es el comando run que ejecutará
