@@ -1,0 +1,33 @@
+name: Buil Multiple Enviroments
+
+on:
+  push:
+    branches:
+      - jobs-artifacts-outputs
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Artifact
+      - run: echo "Build complet > reult.txt
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-results
+          path: result.txt
+      - name: Set version output      
+        id: set_version_output
+        run: echo "version=1.0" >> $GITHUB_OUPTUT        
+    outputs:
+      version: ${{ steps.set_version_output.outputs.version}}
+
+  print-version:
+    runs-on: ubuntu-lastest
+    needs: build
+    steps:
+      - name: Print version
+        run: echo "The version is ${{ needs.build.outputs.version}}
+  
+  
+
+    
